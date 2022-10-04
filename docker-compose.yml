@@ -1,0 +1,40 @@
+version: "3.9"
+services:
+  postgres_library:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "LOKHMATIKOV_205"
+      POSTGRES_USER: "LOKHMATIKOV_205"
+      POSTGRES_PASSWORD: "LOKHMATIKOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/scripts/library.sql:/docker-entrypoint-initdb.d/library.sql
+      - ./postgres_library_data:/var/lib/postgresql/data
+    ports:
+      - "5431:5432"
+
+  postgres_hospital:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "LOKHMATIKOV_205"
+      POSTGRES_USER: "LOKHMATIKOV_205"
+      POSTGRES_PASSWORD: "LOKHMATIKOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/scripts/hospital.sql:/docker-entrypoint-initdb.d/hospital.sql
+      - ./postgres_hospital_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  postgres_trains:
+    image: postgres:14.5
+    environment:
+      POSTGRES_DB: "LOKHMATIKOV_205"
+      POSTGRES_USER: "LOKHMATIKOV_205"
+      POSTGRES_PASSWORD: "LOKHMATIKOV_205"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    volumes:
+      - ./docker/db/scripts/trains.sql:/docker-entrypoint-initdb.d/trains.sql
+      - ./postgres_trains_data:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
