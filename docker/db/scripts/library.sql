@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS library.category (
     book_isbns VARCHAR(15)
 );
 
-CREATE TABLE book_category (
+CREATE TABLE library.book_category (
     book_isbn VARCHAR(15) REFERENCES library.book(isbn),
     category_id VARCHAR(36) REFERENCES library.category(id),
     PRIMARY KEY(book_isbn, category_id)
